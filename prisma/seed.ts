@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
-import invariant from "tiny-invariant";
 
 const prisma = new PrismaClient();
 
@@ -34,26 +33,26 @@ async function seed() {
     where: { userId: user.id },
   });
 
-  invariant(currentAccount, "Account must be created");
-
-  await prisma.expense.create({
-    data: {
-      name: "An expense",
-      accountId: currentAccount.id,
-      amount: 1000,
-      frequency: "",
-      transactedAt: new Date().toISOString(),
-    },
-  });
-  await prisma.expense.create({
-    data: {
-      name: "A negative expense",
-      accountId: currentAccount.id,
-      amount: -1000,
-      frequency: "",
-      transactedAt: new Date().toISOString(),
-    },
-  });
+  if (currentAccount) {
+    await prisma.expense.create({
+      data: {
+        name: "An expense",
+        accountId: currentAccount.id,
+        amount: 1000,
+        frequency: "",
+        transactedAt: new Date().toISOString(),
+      },
+    });
+    await prisma.expense.create({
+      data: {
+        name: "A negative expense",
+        accountId: currentAccount.id,
+        amount: -1000,
+        frequency: "",
+        transactedAt: new Date().toISOString(),
+      },
+    });
+  }
 
   console.log(`Database has been seeded. 🌱`);
 }
