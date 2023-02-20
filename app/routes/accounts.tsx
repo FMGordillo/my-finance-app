@@ -22,9 +22,10 @@ export default function AccountsPage() {
   const { accounts } = useLoaderData() as LoaderData;
 
   return (
-    <div className="grid h-full grid-rows-4 items-center">
-      <header className="row-span-1 flex justify-center gap-4">
-        <ul>
+    <div className="flex h-full flex-col gap-8">
+      <h1 className="text-3xl">Accounts</h1>
+      <header className="row-span-1 flex justify-center">
+        <ul className="flex gap-4">
           {accounts.map((account) => (
             <Link key={account.id} to={`/accounts/${account.id}`}>
               <li>
@@ -32,8 +33,14 @@ export default function AccountsPage() {
               </li>
             </Link>
           ))}
+          <Link to="/accounts/new">
+            <li>
+              <Button variant="OUTLINED">Create account</Button>
+            </li>
+          </Link>
         </ul>
       </header>
+      <hr />
       <div className="row-span-3">
         <Outlet />
       </div>

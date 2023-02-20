@@ -34,6 +34,7 @@ model Account {
 
 model Expense {
   id              String    @id @default(cuid())
+  name            String?
   amount          Float
   account         Account?  @relation(fields: [accountId], references: [id])
   accountId       String?
