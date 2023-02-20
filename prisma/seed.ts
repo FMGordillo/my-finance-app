@@ -38,8 +38,18 @@ async function seed() {
 
   await prisma.expense.create({
     data: {
+      name: "An expense",
       accountId: currentAccount.id,
       amount: 1000,
+      frequency: "",
+      transactedAt: new Date().toISOString(),
+    },
+  });
+  await prisma.expense.create({
+    data: {
+      name: "A negative expense",
+      accountId: currentAccount.id,
+      amount: -1000,
       frequency: "",
       transactedAt: new Date().toISOString(),
     },
