@@ -34,12 +34,13 @@ export async function action({ request }: ActionArgs) {
     );
   }
 
-  if (password.length < 8) {
-    return json(
-      { errors: { email: null, password: "Password is too short" } },
-      { status: 400 }
-    );
-  }
+  // TODO: Remove when db logic is implemented
+  // if (password.length < 8) {
+  //   return json(
+  //     { errors: { email: null, password: "Password is too short" } },
+  //     { status: 400 }
+  //   );
+  // }
 
   const user = await verifyLogin(email, password);
 
