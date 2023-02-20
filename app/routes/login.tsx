@@ -80,7 +80,7 @@ export default function LoginPage() {
   }, [actionData]);
 
   return (
-    <div className="flex min-h-full flex-col justify-center">
+    <main className="flex min-h-full flex-col items-center justify-center">
       <Form method="post" className="space-y-6">
         <label className="block text-sm font-medium text-gray-700">
           Email address
@@ -132,13 +132,13 @@ export default function LoginPage() {
         >
           Log in
         </button>
-        <input
-          id="remember"
-          name="remember"
-          type="checkbox"
-          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-        />
         <label htmlFor="remember" className="ml-2 block text-sm text-gray-900">
+          <input
+            id="remember"
+            name="remember"
+            type="checkbox"
+            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
           Remember me
         </label>
         Don't have an account?{" "}
@@ -152,6 +152,6 @@ export default function LoginPage() {
           Sign up
         </Link>
       </Form>
-    </div>
+    </main>
   );
 }
