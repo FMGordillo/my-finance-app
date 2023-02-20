@@ -1,4 +1,4 @@
-import { Account } from "@prisma/client";
+import type { Account } from "@prisma/client";
 import { json } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/server-runtime";
 import { useLoaderData } from "react-router";
@@ -26,7 +26,12 @@ export default function AccountIdPage() {
 
   return (
     <div>
-      <h1>{account.name}</h1>
+      <section>
+        <h1>Expenses</h1>
+      </section>
+      <section>
+        <h1>Gains</h1>
+      </section>
     </div>
   );
 }
