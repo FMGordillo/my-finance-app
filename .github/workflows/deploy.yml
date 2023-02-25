@@ -116,6 +116,11 @@ jobs:
           wait-on: "http://localhost:8811"
         env:
           PORT: "8811"
+      - name: Upload to codecov.io
+        uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: false
+          files: lcov.info
 
   build:
     name: 🐳 Build
